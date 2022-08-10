@@ -1,10 +1,14 @@
-const btnE1 = document.querySelector(".btn");
+const textareaE1 = document.getElementById("textarea");
 
-btnE1.addEventListener("mouseover", (event)=>{
-    const x = (event.pageX - btnE1.offsetLeft)
-    const y = (event.pageY - btnE1.offsetTop)
+const totalCounterE1 = document.getElementById("total-counter");
 
+const remainingCounterE1 = document.getElementById("remaining-counter");
 
-    btnE1.style.setProperty("--xPos",x + "px");
-    btnE1.style.setProperty("--yPos", y + "px");
+textareaE1.addEventListener("keyup", ()=>{
+    updateCounter();
 });
+
+function updateCounter() {
+    totalCounterE1.innerText = textareaE1.value.length;
+    remainingCounterE1.innerText = textareaE1.getAttribute("maxLength") - textareaE1.value.length;   
+}
